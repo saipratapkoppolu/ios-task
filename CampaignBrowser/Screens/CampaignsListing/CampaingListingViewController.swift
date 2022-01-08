@@ -19,6 +19,8 @@ class CampaignListingViewController: UIViewController {
         super.viewDidLoad()
 
         assert(typedView != nil)
+
+        setCustomFlowLayout()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,5 +41,11 @@ class CampaignListingViewController: UIViewController {
                 })
             })
             .disposed(by: disposeBag)
+    }
+
+    private func setCustomFlowLayout() {
+        if let flowLayout = typedView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSize(width: typedView.frame.width, height: 450)
+        }
     }
 }
